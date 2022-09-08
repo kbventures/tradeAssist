@@ -7,10 +7,10 @@ import connectDB from './config/db';
 import { errorHandler, notFound } from './middlewares/errorMiddleware';
 
 // Routes
-// import roomRoutes from './routes/roomRoutes';
+import roomRoutes from './routes/roomRoutes';
 import userRoutes from './routes/userRoutes';
-// import bookingRoutes from './routes/bookingRoutes';
-// import uploadRoutes from './routes/uploadRoutes';
+import bookingRoutes from './routes/bookingRoutes';
+import uploadRoutes from './routes/uploadRoutes';
 
 import tradeRoutes from './routes/tradeRoutes';
 
