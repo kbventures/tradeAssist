@@ -7,10 +7,12 @@ import connectDB from './config/db';
 import { errorHandler, notFound } from './middlewares/errorMiddleware';
 
 // Routes
-import roomRoutes from './routes/roomRoutes';
+// import roomRoutes from './routes/roomRoutes';
 import userRoutes from './routes/userRoutes';
-import bookingRoutes from './routes/bookingRoutes';
-import uploadRoutes from './routes/uploadRoutes';
+// import bookingRoutes from './routes/bookingRoutes';
+// import uploadRoutes from './routes/uploadRoutes';
+
+import tradeRoutes from './routes/tradeRoutes';
 
 const app: Application = express();
 
@@ -23,10 +25,18 @@ app.use(express.json());
 
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
+
+
+//Default 0
+app.get("/", (req: Request, res: Response)  => {
+  res.status(201).json({ message: "Welcome to Trade Assist" });
+})
+
 // Default 
 app.get("/api", (req: Request, res: Response)  => {
     res.status(201).json({ message: "Welcome to Hotel Booking App" });
 })
+
 
 // Room Route
 app.use("/api/rooms", roomRoutes);
@@ -43,6 +53,10 @@ app.use("/api/uploads", uploadRoutes);
 app.get("/api/config/paypal", (req, res) => {
   res.status(201).send(process.env.PAYPAL_CLIENT_ID);
 });
+
+// Trades Route
+app.use("/api/trades", tradeRoutes);
+
 
 app.use(errorHandler);
 app.use(notFound);
