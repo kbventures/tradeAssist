@@ -5,10 +5,13 @@
   "main": "server.ts",
   "scripts": {
     "server": "ts-node-dev backend/server.ts",
-    "client": "npm start --prefix frontend"
+    "client": "npm start --prefix frontend",
+    "test": "jest --coverage",
+    "dev": "nodemon ./backend/server.ts",
+    "build": "tsc"
   },
   "keywords": [],
-  "author": "Said MOUNAIM",
+  "author": "Ken Beaudin",
   "license": "ISC",
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -23,7 +26,6 @@
     "nodemon": "^2.0.19",
     "supertest": "^6.2.4",
     "ts-jest": "^28.0.8",
-    "ts-node": "^10.9.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.5"
   },

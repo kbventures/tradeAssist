@@ -4,8 +4,8 @@ import Trade from '../models/Trade';
 import { IUserRequest } from '../models/User';
 
 
-// @Desc Get All Rooms
-// @Route /api/rooms
+// @Desc Get All Trades
+// @Route /api/trades
 // @Method GET
 export const getAll = asyncHandler(async(req: Request, res: Response) => {
 
@@ -37,85 +37,85 @@ export const getAll = asyncHandler(async(req: Request, res: Response) => {
 })
 
 
-// @Desc Search rooms
-// @Route /api/rooms/search/
+// @Desc Search trades
+// @Route /api/trades/search/
 // @Method GET
-// export const searchRooms = asyncHandler(async(req: Request, res: Response) => {
-//     const filterd = await Room.find({ $and: [ 
-//         { $or: [{name: req.query.keyword },{description: req.query.keyword}] }, 
-//         {numOfBeds: req.query.numOfBeds}, 
-//         {category: req.query.roomType} 
-//     ] });
-//     res.status(201).json(filterd);
-// })
+export const searchTrades = asyncHandler(async(req: Request, res: Response) => {
+    const filterd = await Trade.find({ $and: [ 
+        { $or: [{name: req.query.keyword },{description: req.query.keyword}] }, 
+        {numOfBeds: req.query.numOfBeds}, 
+        {category: req.query.roomType} 
+    ] });
+    res.status(201).json(filterd);
+})
 
-// @Desc Get Single Room
-// @Route /api/rooms/:id
+// @Desc Get Single trade
+// @Route /api/trades/:id
 // @Method GET
-// export const getSingle = asyncHandler(async (req: Request, res: Response) => {
+export const getSingle = asyncHandler(async (req: Request, res: Response) => {
 
-//     const room = await Room.findById(req.params.id);
+    const trade = await Trade.findById(req.params.id);
 
-//     if(!room) {
-//         res.status(401);
-//         throw new Error("Room not found");
-//     }
+    if(!trade) {
+        res.status(401);
+        throw new Error("Room not found");
+    }
 
-//     res.status(201).json(room);
+    res.status(201).json(trade);
 
-// })
+})
 
-// @Desc Create new room
-// @Route /api/rooms
+// @Desc Create new trade
+// @Route /api/trades
 // @Method POST
 export const addTrade = asyncHandler(async (req: IUserRequest, res: Response) => {
 
     req.body.user = req.user._id;
 
-    const room = await Trade.create(req.body);
+    const trade = await Trade.create(req.body);
 
-    res.status(201).json(room);
+    res.status(201).json(trade);
 
 })
 
-// @Desc Update room
-// @Route /api/rooms/:id
+// @Desc Update trade
+// @Route /api/trades/:id
 // @Method PUT
-// export const updateRoom = asyncHandler(async (req: IUserRequest, res: Response) => {
+export const updateTrade = asyncHandler(async (req: IUserRequest, res: Response) => {
 
-//     let room = await Room.findById(req.params.id);
+    let trade = await Trade.findById(req.params.id);
 
-//     if(!room) {
-//         res.status(401);
-//         throw new Error("Room not found");
-//     }
+    if(!trade) {
+        res.status(401);
+        throw new Error("Room not found");
+    }
 
-//     room = await Room.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    trade = await Trade.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
-//     res.status(201).json(room);
+    res.status(201).json(trade);
 
-// })
+})
 
-// @Desc Delete room
-// @Route /api/rooms/:id
+// @Desc Delete trade
+// @Route /api/trades/:id
 // @Method DELETE
-// export const deleteRoom = asyncHandler(async (req: IUserRequest, res: Response) => {
+export const deleteTrade = asyncHandler(async (req: IUserRequest, res: Response) => {
 
-//     let room = await Room.findById(req.params.id);
+    let trade = await Trade.findById(req.params.id);
 
-//     if(!room) {
-//         res.status(401);
-//         throw new Error("Room not found");
-//     }
+    if(!trade) {
+        res.status(401);
+        throw new Error("Room not found");
+    }
 
-//     room = await Room.findByIdAndDelete(req.params.id);
+    trade = await Trade.findByIdAndDelete(req.params.id);
 
-//     res.status(201).json({});
+    res.status(201).json({});
 
-// })
+})
 
-// @Desc Create Room Review
-// @Route /api/rooms/:id/reviews
+// @Desc Create Trade Review
+// @Route /api/trades/:id/reviews
 // @Method POST
 // export const createRoomReview = asyncHandler(async (req: IUserRequest, res: Response) => {
 
