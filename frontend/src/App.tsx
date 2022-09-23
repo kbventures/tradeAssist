@@ -17,7 +17,8 @@ import PasswordScreen from './screens/PasswordScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import RoomDetailsScreen from './screens/RoomDetailsScreen';
-import AddTradeScreen from './screens/AddTradeScreen'
+import TradesScreen from './screens/TradesScreen'
+import AddTradesScreen from './screens/AddTradesScreen'
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
               <Route index element={<HomeScreen />} />
               <Route path="/login" element={<LoginScreen />} />
               <Route path="/register" element={<RegisterScreen />} />
+              <Route path="/trades/my" element={<TradesScreen />} />
+              <Route path="/trades/add" element={<AddTradesScreen />} />
+
               <Route path="/account/profile" element={<ProtectedRoute />} >
                 <Route path="/account/profile" element={<ProfileScreen />} />
               </Route>
@@ -38,9 +42,7 @@ function App() {
               <Route path="/bookings/me" element={<ProtectedRoute />} >
                 <Route path="/bookings/me" element={<MyBookingsScreen />} />
               </Route>
-              <Route path="/trades/add" element={<ProtectedRoute />} >
-                <Route path="/trades/add" element={<AddTradeScreen />} />
-              </Route>
+   
      
               
               <Route path="/admin/rooms" element={<OnlyAdmin />} >

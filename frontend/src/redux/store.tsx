@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import { usersFetchReducer, userDetailsReducer, userUpdateReducer, userDeleteReducer, userLoginReducer, userRegisterReducer, profileUpdateReducer, passwordUpdateReducer } from './reducers/UserReducers';
 import {roomsFetchReducer, roomDetailsReducer, roomCreateReviewReducer, roomCreateReducer, roomUpdateReducer, roomDeleteReducer } from './reducers/RoomReducers';
 import { bookingsFetchReducer, bookingDeleteReducer, roomBookingCheckReducer, bookingCreateReducer, bookedDatesReducer, BookingsMyReducer } from './reducers/BookingReducers';
+import { tradeCreateReducer } from './reducers/TradeReducers';
 
 const composeEnhancer = (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
@@ -26,7 +27,10 @@ const rootReducers = combineReducers({
   bookingDelete: bookingDeleteReducer,
   bookedDates: bookedDatesReducer,
   bookingCreate: bookingCreateReducer,
-  BookingsMy: BookingsMyReducer
+  BookingsMy: BookingsMyReducer,
+
+  
+  newTrade: tradeCreateReducer
 });
 
 const userInfoFromStorage = JSON.parse(localStorage.getItem("userInfo")!);

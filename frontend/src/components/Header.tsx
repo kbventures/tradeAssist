@@ -30,6 +30,18 @@ const Header: React.FC = () => {
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
           </Nav>
+          <Nav className="me-auto">
+            <LinkContainer to="/">
+            <NavDropdown className="ms-4 dropdown-avatar" title="Trades" id="basic-nav-dropdown">
+                <LinkContainer to="/trades/my">
+                  <NavDropdown.Item>Trades</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/trades/add">
+                  <NavDropdown.Item>Add Trades</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+            </LinkContainer>
+          </Nav>
           <Nav className="ml-auto align-items-center">
             {userInfo ? 
             <NavDropdown className="dropdown-avatar" title={
@@ -46,9 +58,6 @@ const Header: React.FC = () => {
               </LinkContainer>
               <LinkContainer to="/account/password">
                 <NavDropdown.Item>Password</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/trades/add">
-                <NavDropdown.Item>Add Trade</NavDropdown.Item>
               </LinkContainer>
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>

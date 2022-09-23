@@ -40,14 +40,14 @@ export const getAll = asyncHandler(async(req: Request, res: Response) => {
 // @Desc Search trades
 // @Route /api/trades/search/
 // @Method GET
-export const searchTrades = asyncHandler(async(req: Request, res: Response) => {
-    const filterd = await Trade.find({ $and: [ 
-        { $or: [{name: req.query.keyword },{description: req.query.keyword}] }, 
-        {numOfBeds: req.query.numOfBeds}, 
-        {category: req.query.roomType} 
-    ] });
-    res.status(201).json(filterd);
-})
+// export const searchTrades = asyncHandler(async(req: Request, res: Response) => {
+//     const filterd = await Trade.find({ $and: [ 
+//         { $or: [{name: req.query.keyword },{description: req.query.keyword}] }, 
+//         {numOfBeds: req.query.numOfBeds}, 
+//         {category: req.query.roomType} 
+//     ] });
+//     res.status(201).json(filterd);
+// })
 
 // @Desc Get Single trade
 // @Route /api/trades/:id
@@ -68,9 +68,11 @@ export const getSingle = asyncHandler(async (req: Request, res: Response) => {
 // @Desc Create new trade
 // @Route /api/trades
 // @Method POST
-export const addTrade = asyncHandler(async (req: IUserRequest, res: Response) => {
+export const newTrade = asyncHandler(async (req: Request, res: Response) => {
 
-    req.body.user = req.user._id;
+    // req.body.user = req.user._id;
+
+    console.log(req.body.user)
 
     const trade = await Trade.create(req.body);
 
